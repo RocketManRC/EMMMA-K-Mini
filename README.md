@@ -58,5 +58,17 @@ To get out of the config menu select either the page "Exit NO Save" or "Save & E
 
 Note that the Key and Scale will be saved on "Save & Exit" but not the Octave.
 
+# How to Play the Keyboard
+
+This is modelled after the Kalimba. The root note of a scale is played by touching the middle pin with your right thumb then the next note of the scale will be the next pin to the left touched with your left thumb. Alternating pins on each side will play the full scale.
+
+The following image shows the notes for each pin when in the C Major Scale.
+
+![Photo](images/IMG_2013.jpg)
+
+# Pitch Bend, Mod Wheel and Chords
+
+
+
 
 
