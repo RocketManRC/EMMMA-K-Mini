@@ -27,7 +27,7 @@ This is showing the MIDI velocity (a.k.a. note volume). There are two settings f
 
 ## Options Mode
 
-A double press on the encoder will switch to Options mode. Rotate the encoder to select the option to change and then single press the endoder to change the option.
+A double press on the encoder will switch to Options mode. Rotate the encoder to select the option to change and then single press the endoder to change the option by rotating.
 
 ![Photo](images/IMG_2012.jpg)
 
@@ -45,6 +45,18 @@ A single encoder press on the master volume page will get back to the UI the way
 A long press when in Options Mode will change to Config Mode (NOTE this doesn't work when in Options Mode and displaying the Master Volume page. Another fault to be fixed!).
 
 ![Photo](images/IMG_2013.jpg)
+
+The four configs that can be changed are:
+
+- Adjacent Pin Filter (when set on which is the default will prevent notes playing from accidentally touching and adjacent pin). In general you will want this to be on to make the keyboard easier to play.
+- Dissonant Notes Filter (the default is off).
+- MIDI Channel (default is 1).
+- Modwheel CC value (default is 1).
+- Wireless mode (ESP-Now to use the wireless hub or BLE to use Bluetooth Low Energy).
+
+To get out of the config menu select either the page "Exit NO Save" or "Save & Exit". "Save" means to save the startup values but in either case the current values will be changed. If the wireless mode has been changed then the system will restart on exit even with "Exit NO Save" (yet another fault to fix).
+
+Note that the Key and Scale will be saved on "Save & Exit" but not the Octave.
 
 
 
