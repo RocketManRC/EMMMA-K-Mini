@@ -3,7 +3,7 @@
 # Introduction
 The EMMMA-K is a MIDI controller for electronic music that uses touch pins for note keys and user interface. A motion sensor is used to generate MIDI commands for effects such as pitch bend and mod wheel.
 
-![Photo](images/IMG_2009.jpeg)
+![Photo](images/IMG_2009.jpg)
 
 The layout of the touch pins for note keys is modeled after the Kalimba (a.k.a. thumb piano) which is a modernized version of the MBira, an ancient African plucked string instrument.
 
