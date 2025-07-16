@@ -23,17 +23,22 @@ This is a newer and smaller version of the previous EMMMA-K which can be found h
 
 ![Photo](images/IMG_2011.jpg)
 
-This is showing the MIDI velocity (a.k.a. note volume). There are two settings for this to select a high and low volume. A single press on the rotary encoder toggles betweem the two.
+This is showing the MIDI velocity (a.k.a. note volume). There are two settings for this to select a high and low volume. A single press on the rotary encoder toggles betweem the two. Rotating the encoder will change the value of the setting.
+
+## Options Mode
 
 A double press on the encoder will switch to Options mode. Rotate the encoder to select the option to change and then single press the endoder to change the option.
 
 ![Photo](images/IMG_2012.jpg)
 
-The three options that can be changes are:
+The three options that can be changed are:
 - Scale (22 variations).
 - Key (C, C#, D, etc).
 - Octave (relative to scale starting with MIDI value 60).
 
-A single encoder press on the notes page will display the notes being playe.
+A single encoder press on the notes page will display the note being played. Single press again to get back to selection the options page. 
 
-A single encoder press on the master volume page will get back to the default page.
+A single encoder press on the master volume page will get back to the UI the way it was at startup (NOTE this will also have the effect of unintentionally toggling between the low and high velocities which is a fault that needs to be fixed).
+
+## Config Mode
+
