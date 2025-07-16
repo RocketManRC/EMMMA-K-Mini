@@ -36,9 +36,15 @@ The three options that can be changed are:
 - Key (C, C#, D, etc).
 - Octave (relative to scale starting with MIDI value 60).
 
-A single encoder press on the notes page will display the note being played. Single press again to get back to selection the options page. 
+A single encoder press on the notes page will display the note being played. Single press again to get back to selecting the options page. 
 
 A single encoder press on the master volume page will get back to the UI the way it was at startup (NOTE this will also have the effect of unintentionally toggling between the low and high velocities which is a fault that needs to be fixed).
 
 ## Config Mode
+
+A long press when in Options Mode will change to Config Mode (NOTE this doesn't work when in Options Mode and displaying the Master Volume page. Another fault to be fixed!).
+
+![Photo](images/IMG_2013.jpg)
+
+
 
