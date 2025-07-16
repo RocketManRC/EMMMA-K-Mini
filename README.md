@@ -1,7 +1,7 @@
 # EMMMA-K-Mini
 
 # Introduction
-The EMMMA-K-Mini is a MIDI controller for electronic music that uses touch pins for note keys.
+The EMMMA-K-Mini is a MIDI controller for electronic music that uses touch pins for note keys and for effects such as pitch bend and modwheel.
 
 ![Photo](images/IMG_2009.jpg)
 
@@ -27,7 +27,7 @@ This is showing the MIDI velocity (a.k.a. note volume). There are two settings f
 
 ## Options Mode
 
-A double press on the encoder will switch to Options mode. Rotate the encoder to select the option to change and then single press the endoder to change the option by rotating.
+A double press on the encoder will switch to Options mode. Rotate the encoder to select the option to change and then single press the encoder to change the option by rotating.
 
 ![Photo](images/IMG_2012.jpg)
 
@@ -68,11 +68,13 @@ The following image shows the notes for each pin when in the C Major Scale.
 
 # Pitch Bend, Modwheel and Chords
 
-There is a touch pin on the right hand side of the case that has 3 functions:
+There is a touch pin on the right hand side of the case (effects pin) that has 3 functions:
 
 - Holding the pin with your finger will enable Pitch Bend and Modwheel. Then tilting the unit forward and back will cause a pitch bend and tilting the unit to the left and right will change the modwheel (typically used to change a paramter such filter cutoff in the connected synthesizer).
 - Tapping the pin will toggle the relative major or minor scale for the Major, Minor, Major Pentatonic and Minor Pentatonic scales (colour of the title on the display will toggle between green and blue).
 - A long press of the pin will toggle between note and chord mode but again just for the Major, Minor, Major Pentatonic and Minor Pentatonic scales. In this case the colour of the display will toggle between red and purple when toggling between the major and minor relative scales).
+
+Note that there is a scale called "Custom" and one called "Custom Alt". These are currently hardcoded to be Major and Major Pentatonic scales allowing to switch between those two with the effects pin.
 
 
 
