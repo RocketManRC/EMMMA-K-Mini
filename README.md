@@ -84,10 +84,13 @@ This has to be carried out on a computer (not a mobile device) using one of the 
 2. Connect the EMMMA-K Mini to your computer using a USB cable (must support data transfer as well as power).
 3. Navigate to this page on the web browser: [https://espressif.github.io/esptool-js/](https://espressif.github.io/esptool-js/).
 4. Press the Connect button.
-5. On the pop-up window pick the device that looks similar to the one shown selected in this image: ![Photo](images/firmwareupdate1.png) and press connect.
+5. On the pop-up window pick the device that looks similar to the one shown selected in this image and press connect: ![Photo](images/firmwareupdate1.png)
 6. In the box labelled "Flash Address" add a zero to the value so that it is 0x10000.
 7. Press the button Chose File and pick the file firmware.bin that was downloaded in step 1. Press Open.
 8. Press Program
+9. Power the EMMMA-K Mini down and then back on.
+
+Should the EMMMA-K Mini fail to startup (if for example the file firmware.bin was accidentally loaded at the wrong address) there are 4 more files that have to be loaded before loading firmware.bin again. The files are in the folder "extras" and there is a readme containing the file names and locations to load them.
 
 
 
