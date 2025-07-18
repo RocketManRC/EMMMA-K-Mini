@@ -123,6 +123,7 @@ bool relativeScale = false;
 uint8_t uiMode = 1; // 0 = change either options or config depending on optionsMode, 1 = change mode
 bool optionsMode = true; // if true UI changes options (scale, key, etc), else UI changes config
 bool wirelessChanged = false; // this will be set when the wireless mode changed causing a restart
+bool savedUseBluetooth; // this is so we can put back the wireless mode if we exit config with no save
 bool enableAdjacentPins = false;
 bool enableDissonantNotes = true;
 
@@ -240,9 +241,9 @@ void displayValue(String title, String value)
   {
     img.setTextColor(TFT_BLUE, backgroundColour);  
     img.setCursor(40, 160, 2);
-    img.print("- Single Click to Toggle");
+    img.print("- Single Click to Toggle Vol");
     img.setCursor(40, 180, 2);
-    img.print("- Double Click to Exit");
+    img.print("- Double Click to Options");
     img.setCursor(40, 200, 2);
     img.print("- Long Press to Send CC80");
   }
@@ -880,6 +881,8 @@ void changeCcForModwheel(bool up)
 
 void changeWirelessMode(bool up)
 {
+  savedUseBluetooth = useBluetooth; // so we can put back wireless mode if exit NO save
+
   if(useBluetooth)
     useBluetooth = false;
   else
@@ -901,7 +904,7 @@ void saveExitConfig(bool up)
   mode = "Volume"; // back to default of mode is volume
   displayMasterVolume();
 
-  if(wirelessChanged) // need to reboot if wireless was changed whether or not the config was saved
+  if(wirelessChanged) // need to reboot if wireless was changed
     ESP.restart();
 }
 
@@ -918,8 +921,11 @@ void exitNoSaveConfig(bool up)
   mode = "Volume"; // back to default of mode is volume
   displayMasterVolume();
 
-  if(wirelessChanged) // need to reboot if wireless was changed whether or not the config was saved
-    ESP.restart();
+  //if(wirelessChanged) // need to reboot if wireless was changed whether or not the config was saved - NOT DOING THIS ANYMORE
+  //  ESP.restart();
+
+  // Put back the wireless mode because we need to reboot to change it so the value displayed in config won't be correct
+  useBluetooth = savedUseBluetooth;
 }
 
 void scaleToMidiValues(uint8_t *scale, uint8_t size)
@@ -1126,8 +1132,7 @@ void buttonClicked()
   Serial.println("button clicked");
   Serial.printf("uiMode: %d, optionsMode: %d\n", uiMode, optionsMode);
   
-  if(mode != "Volume")
-  //if(true)
+  if(mode != "Volume" || (mode == "Volume" && !optionsMode))
   {
     if(uiMode == 0)
       uiMode = 1;
@@ -1143,6 +1148,7 @@ void buttonClicked()
   {
     // Special processing in Volume mode and uiMode == 1: switch between low and high volume
     // and adjust each with knob. Double press to get out
+    Serial.printf("uiMode: %d, optionsMode: %d\n", uiMode, optionsMode);
     if(uiMode == 0)
     {
       // this allows us to get into volume mode if we are out
@@ -1150,6 +1156,7 @@ void buttonClicked()
 
       displayMode();
     }
+    else
     {
       static uint8_t lowVolume = 12;
       static uint8_t highVolume = 127;
@@ -1182,7 +1189,9 @@ void buttonClicked()
 void buttonLongPress()
 {
   Serial.println("button long press");
+  Serial.printf("uiMode: %d, optionsMode: %d\n", uiMode, optionsMode);
 
+  #if 0
   // Note that long press doesn't switch to config in Volume mode
   // need to use double press to get out
 
@@ -1210,13 +1219,39 @@ void buttonLongPress()
       value = false;
     }
   }
+#else
+  if(mode == "Volume" && optionsMode && uiMode)
+  {
+    // Long press in Volume mode sends CC80 toggled between 0 and 127 (off and on)
+    static bool value = false;
+
+    if(value == false)
+    {
+      sendCC(80, 127);
+      value = true;  
+    }
+    else
+    {
+      sendCC(80, 0);
+      value = false;
+    }
+  }
+  else
+  {
+    optionsMode = false;
+
+    uiMode = 0;
+
+    displayConfig();
+  }
+#endif
 }
 
 void buttonDoubleClick()
 {
   Serial.println("Button double click");
 
-  if(mode == "Volume")
+  if(mode == "Volume" && optionsMode)
   {
     uiMode = 0;
     
@@ -1468,7 +1503,7 @@ void displaySetup()
     img.fillScreen(TFT_BLACK);
   
     img.println("EMMMA-K Mini");
-    img.print("                   v2.0.1");
+    img.print("                   v2.0.2");
     img.pushSprite(0, 0);
 }
 
