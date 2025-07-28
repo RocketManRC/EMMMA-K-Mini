@@ -38,11 +38,11 @@ The three options that can be changed are:
 
 A single encoder press on the notes page will display the note being played. Single press again to get back to selecting the options page. 
 
-A single encoder press on the master volume page will get back to the UI the way it was at startup (~~NOTE this will also have the effect of unintentionally toggling between the low and high velocities which is a fault that needs to be fixed~~ Fixed in v2.0.2).
+A single encoder press on the master volume page will get back to the UI the way it was at startup.
 
 ## Config Mode
 
-A long press when in Options Mode will change to Config Mode (~~NOTE this doesn't work when in Options Mode and displaying the Master Volume page. Another fault to be fixed!~~ Fixed in v2.0.2).
+A long press when in Options Mode will change to Config Mode.
 
 ![Photo](images/IMG_2013.jpg)
 
@@ -54,7 +54,7 @@ The four configs that can be changed are:
 - Modwheel CC value (default is 1).
 - Wireless mode (ESP-Now to use the wireless hub or BLE to use Bluetooth Low Energy).
 
-To get out of the config menu select either the page "Exit NO Save" or "Save & Exit". "Save" means to save the startup values but in either case the current values will be changed. If the wireless mode has been changed then the system will restart on exit even with "Exit NO Save" (~~yet another fault to fix~~ Fixed in v2.0.2 now only restarts if config saved).
+To get out of the config menu select either the page "Exit NO Save" or "Save & Exit". "Save" means to save the startup values but in either case the current values will be changed. If the wireless mode has been changed then the system will restart on exit unless "Exit NO Save" in which case the change of wireless mode will be discarded.
 
 Note that the Key and Scale will be saved on "Save & Exit" but not the Octave.
 
